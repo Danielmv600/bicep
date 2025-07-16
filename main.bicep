@@ -1,13 +1,26 @@
-resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: 'my-bicep-rg'
-  location: 'eastus'
-}
+targetScope = 'resourceGroup'
 
-resource storage 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'mybicepstorageacct'
-  location: rg.location
+param storageAccountName string = 'mybicepstorageacct'
+param secondStorageAccountName string = 'danielstorageacct'
+param location string = resourceGroup().location
+
+// First storage account
+resource storage1 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: storageAccountName
+  location: location
   sku: {
     name: 'Standard_LRS'
   }
   kind: 'StorageV2'
 }
+
+// Second storage account
+resource storage2 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: secondStorageAccountName
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+
