@@ -1,11 +1,12 @@
-resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: 'my-bicep-rg'
-  location: 'eastus'
-}
+// main.bicep
+targetScope = 'resourceGroup'
+
+param storageAccountName string = 'mybicepstorageacct'
+param location string = resourceGroup().location
 
 resource storage 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'mybicepstorageacct'
-  location: rg.location
+  name: storageAccountName
+  location: location
   sku: {
     name: 'Standard_LRS'
   }
