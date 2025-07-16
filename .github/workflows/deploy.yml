@@ -19,8 +19,9 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy Bicep template
-  run: |
-    az deployment group create \
-      --resource-group my-bicep-rg \
-      --template-file main.bicep \
-      --parameters storageAccountName=mybicepstorageacct
+      run: |
+        az deployment group create \
+          --resource-group my-bicep-rg \
+          --template-file main.bicep \
+          --parameters storageAccountName=mybicepstorageacct
+
