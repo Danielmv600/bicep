@@ -1,11 +1,10 @@
 targetScope = 'resourceGroup'
 
-param storageAccountName string = 'mybicepstorageacct'
-param secondStorageAccountName string = 'danielstorageacct'
 param location string = resourceGroup().location
 
+// First storage account
 resource storage1 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: storageAccountName
+  name: 'mystorageacct1'
   location: location
   sku: {
     name: 'Standard_LRS'
@@ -13,12 +12,14 @@ resource storage1 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   kind: 'StorageV2'
 }
 
+// Second storage account
 resource storage2 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: secondStorageAccountName
+  name: 'mystorageacct2'
   location: location
   sku: {
     name: 'Standard_LRS'
   }
   kind: 'StorageV2'
 }
+
 
