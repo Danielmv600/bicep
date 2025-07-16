@@ -4,7 +4,6 @@ param storageAccountName string = 'mybicepstorageacct'
 param secondStorageAccountName string = 'danielstorageacct'
 param location string = resourceGroup().location
 
-// First storage account
 resource storage1 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: storageAccountName
   location: location
@@ -14,7 +13,6 @@ resource storage1 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   kind: 'StorageV2'
 }
 
-// Second storage account
 resource storage2 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: secondStorageAccountName
   location: location
