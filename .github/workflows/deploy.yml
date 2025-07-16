@@ -22,5 +22,6 @@ jobs:
       run: |
         az deployment group create \
           --resource-group my-bicep-rg \
-          --template-file main.bicep
-
+          --template-file main.bicep \
+          --parameters storageAccountName1=mystorageacct1unique123 \
+                       storageAccountName2=mystorageacct2unique456
